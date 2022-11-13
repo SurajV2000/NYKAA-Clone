@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup & Login</title>
+    <link rel="stylesheet" href="login.css" />
+</head>
+
+<body>
+    <div class="login-page">
+
+        <form class="l-form">
+            <input type="text" name="" placeholder="user name" id="uName" />
+            <input type="password" placeholder="password" id="pass" />
+            <button>Login</button>
+            <p class="message">Not Registered <a href="register.html">Register</a></p>
+        </form>
+    </div>
+    </div>
+</body>
+
+</html>
+<script>
+
+    let loginData = JSON.parse(localStorage.getItem(("credData")))
+    document.querySelector("button").addEventListener("click", checklogin);
+
+    function checklogin(event) {
+        event.preventDefault();
+        let uname = document.querySelector("#uName").value;
+        let pass = document.querySelector("#pass").value;
+        let count = 0;
+        loginData.forEach((elem) => {
+            if (elem.userName == uname && elem.password == pass) {
+                count = 1;
+                return;
+            }
+        })
+        if (count == 1) {
+            alert("Login Successfully");
+            window.location.href = "index.html";
+        }
+        else {
+            alert("Username or password incorrect");
+            window.location.href = "register.html";
+        }
+
+    }
+
+
+</script>

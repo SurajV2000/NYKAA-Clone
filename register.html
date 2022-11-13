@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup & Login</title>
+    <link rel="stylesheet" href="login.css" />
+    <script src="signup.js"></script>
+  </head>
+  <body>
+    <div class="login-page">
+      <div class="form">
+        <form class="r-form">
+          <input type="text" placeholder="username" id="username" />
+          <input type="text" placeholder="password"  id="password"/>
+          <input type="text" placeholder="email-id" id="mail" />
+          <button>Create</button>
+          <p class="message">
+            Already Registered ? <a href="login.html">Login</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+        document.querySelector("button").addEventListener("click",logincheck);
+    let credentials=JSON.parse(localStorage.getItem("credData")) || [];
+    function logincheck(event){
+        event.preventDefault();
+
+        var data={
+             userName:document.querySelector("#username").value,
+             password:document.querySelector("#password").value,
+             mail:document.querySelector("#mail").value
+        }
+        credentials.push(data);
+        
+        localStorage.setItem("credData",JSON.stringify(credentials))
+        window.location.href="login.html";
+    }
+</script>
